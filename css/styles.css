@@ -1,0 +1,10 @@
+.label {
+    -fx-text-fill: blue;
+    -fx-font-size: 1.5em;
+    -fx-font-weight: bold;
+}
+
+.espaces {
+    -fx-spacing: 10px;
+    -fx-pref-height: 10px;
+}

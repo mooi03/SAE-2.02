@@ -14,7 +14,7 @@ public class Algo {
      */
     public static String GlouEfficace(String nom_fichier) {
         // On recupère un des scénario présent dans le package scenario, qui possède le même de quand on l'apelle dans la méthode
-        File scenario = new File("src" + File.separator + "scenario" + File.separator + nom_fichier);
+        File scenario = new File("src" + File.separator + "main" + File.separator +"java" + File.separator + "scenario" + File.separator + nom_fichier);
         List<Quete> quetes = Scan.Lecture(scenario); // toutes les quêtes sont mises dans une liste
         Graphe graphe = new Graphe(quetes); // créer un ditionnaire avec les quêtes en clés et en valeur les préconditions
         Joueur joueur = new Joueur(quetes); // Initialise la position du joueur en 0 0, créer des listes pour les quetes a réalisées et finies et initialise l'exp et le temps
@@ -71,7 +71,7 @@ public class Algo {
      * @return Une chaîne de caractères représentant le déroulement de l'algorithme.
      */
     public static String GlouExhaustive(String nomDuFichier) {
-        File scenario = new File("src" + File.separator + "scenario" + File.separator + nomDuFichier);
+        File scenario = new File("src" + File.separator + "main" + File.separator +"java" + File.separator + "scenario" + File.separator + nomDuFichier);
         List<Quete> quetes = Scan.Lecture(scenario);
         Graphe graphe = new Graphe(quetes);
         Joueur joueur = new Joueur(quetes);

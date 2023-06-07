@@ -1,14 +1,12 @@
 package Test;
 
 import model.Graphe;
-import model.Position;
 import model.Quete;
 import model.Scan;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeMap;
 
 public class TestGraphe {
     public static void main(String[] args) {

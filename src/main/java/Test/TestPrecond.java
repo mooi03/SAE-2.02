@@ -1,12 +1,12 @@
 package Test;
 import model.Precond;
-import org.junit.Test;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+
 public class TestPrecond {
     public static void main(String[] args) {
         String[] strTest = {"()", "((2,3),(1,))", "((4,),(5,))", "((2,3),)", "((2,),)", "((8,),(7,4))"};
@@ -23,6 +23,8 @@ public class TestPrecond {
             }
         }
     }
+    // on arrive pas a improté junit donc voir sur l'autre version pas ihm
+    /*
     @Test
     public void TestEstPossible() {
         int w = 14;
@@ -111,5 +113,5 @@ public class TestPrecond {
         assertTrue(precond9.estPossible(listWXZ)); //3 conditions
         assertTrue(precond9.estPossible(listXYZ)); //3 conditions
         assertTrue(precond9.estPossible(listWXYZ)); //4 conditions
-    }
+    }*/
 }

@@ -1,5 +1,6 @@
 package Test;
-import model.Algo ;
+
+import model.Algo;
 
 public class TestAlgo {
     public static void main(String[] args) {
