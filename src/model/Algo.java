@@ -56,4 +56,43 @@ public class Algo {
             }
         }
     }
+    public static void GlouExhaustive(String nomDuFichier) {
+        File scenario = new File("src" + File.separator + "scenario" + File.separator + nomDuFichier);
+        List<Quete> quetes = Scan.Lecture(scenario);
+        Graphe graphe = new Graphe(quetes);
+        Joueur joueur = new Joueur(quetes);
+        Boolean continu = true;
+        while (continu) {
+            TreeMap<Integer, Integer> distance = new TreeMap<>(); /// on fait une map qui vas contenire les numeros de quête et leur distance par raport au joueur
+            for (Quete e : joueur.getQueteARealise()) {
+                distance.put(e.getNumero(), e.getPos().compareTo(joueur.getCoordonnees()));
+            }
+            TreeMap<Integer, Boolean> Possible = graphe.estPossible(joueur.getQueteFini());
+            ArrayList<Integer> memoire = new ArrayList<>();
+            for (int x = 0; x < Possible.size(); x++) { /// suprime tout les quête que l'on ne peut faire à cause de precond de distance
+                if (!Possible.get(x)) {
+                    memoire.add(x);
+                }
+            }
+            for (int e : memoire) {
+                distance.remove(e);
+            }
+            int memoireChiffre = Integer.MAX_VALUE;
+            int memoireNumero = -1;
+            distance.remove(0); /// car on veux faire toute les quête avant de finir
+            for (int e : distance.keySet()) {
+                if (distance.get(e) < memoireChiffre) { /// choisie la quête la plus proche du joueur
+                    memoireNumero = e;
+                    memoireChiffre = distance.get(e);
+                }
+            }
+            System.out.println(joueur.faireQuete(memoireNumero));
+
+            if (joueur.getQueteARealise().size() == 1) { /// si il ne reste plus que une seule quête c'est frocement la 0 donc on peut la faire
+                continu = false;
+                System.out.println(joueur.faireQuete(0)) ;
+                System.out.println("\n\n----------- bilan fin -----------\n ça a donc pris : " + joueur.getTemps() + "\n il a fait les quetes " + joueur.getQueteFini() + "\n et a gagner " + joueur.getChExperience() + " xp");
+            }
+        }
+    }
 }
