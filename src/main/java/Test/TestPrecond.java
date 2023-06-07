@@ -16,10 +16,10 @@ public class TestPrecond {
             System.out.println(compPrecond);
             System.out.println(presondTest[i]);
             if (compPrecond.compareTo(presondTest[i])){
-                System.out.println("le cas " + i + " ne marche pas");
+                System.out.println("le cas " + i + " marche bien");
             }
             else {
-                System.out.println("le cas " + i + " marche bien");
+                System.out.println("le cas " + i + " ne marche pas");
             }
         }
     }
