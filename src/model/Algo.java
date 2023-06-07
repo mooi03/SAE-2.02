@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 public class Algo {
-    public static void GlouEfficace(String nom_fichier) {
+    public static String GlouEfficace(String nom_fichier) {
         // On recupère un des scénario présent dans le package scenario, qui possède le même de quand on l'apelle dans la méthode
         File scenario = new File("src" + File.separator + "scenario" + File.separator + nom_fichier);
         List<Quete> quetes = Scan.Lecture(scenario); // toutes les quêtes sont mises dans une liste
@@ -19,6 +19,7 @@ public class Algo {
                 xpQueteFin = quete.getExperience();
             }
         }
+        String QuetesRetour = "";
         Boolean continu = true;
         while (continu) {
             TreeMap<Integer, Integer> distance = new TreeMap<>();
@@ -39,12 +40,12 @@ public class Algo {
                 distance.remove(e);
             }
             if (distance.containsKey(0) && (joueur.getChExperience() >= xpQueteFin)) { // si le joueur a les préconditions pour la quête 0 et si il a assez d'exp
-                System.out.println(joueur.faireQuete(0)); // on fais la quete finale
+                QuetesRetour += joueur.faireQuete(0); // on fais la quete finale
                 continu = false; // on arrête la boucle
-                System.out.println("\n\n----------- bilan fin -----------\n ça a donc pris : " + joueur.getTemps() + "\n il a fait les quetes " + joueur.getQueteFini() + "\n et a gagner " + joueur.getChExperience() + " xp");
+                QuetesRetour += "\n\n----------- bilan fin -----------\n ça a donc pris : " + joueur.getTemps() + "\n il a fait les quetes " + joueur.getQueteFini() + "\n et a gagner " + joueur.getChExperience() + " xp";
             } else { /// si le joueur ne peux pas faire la quête finale car pas assez d'xp ou précondition non remplie
                 int memoireChiffre = Integer.MAX_VALUE;
-                int memoireNumero = -1;
+                int memoireNumero = 0;
                 distance.remove(0); /// car comme la précondition est pas respectée ou que l'xp est insuffisant, on peut pas faire la quête 0
                 for (int e : distance.keySet()) {
                     if (distance.get(e) < memoireChiffre) { /// on choisie la quête la plus proche du joueur
@@ -52,16 +53,19 @@ public class Algo {
                         memoireChiffre = distance.get(e);
                     }
                 }
-                System.out.println(joueur.faireQuete(memoireNumero));
+                QuetesRetour += joueur.faireQuete(memoireNumero);
             }
         }
+        return QuetesRetour;
     }
-    public static void GlouExhaustive(String nomDuFichier) {
+
+    public static String GlouExhaustive(String nomDuFichier) {
         File scenario = new File("src" + File.separator + "scenario" + File.separator + nomDuFichier);
         List<Quete> quetes = Scan.Lecture(scenario);
         Graphe graphe = new Graphe(quetes);
         Joueur joueur = new Joueur(quetes);
         Boolean continu = true;
+        String QuetesRetour = "";
         while (continu) {
             TreeMap<Integer, Integer> distance = new TreeMap<>(); /// on fait une map qui vas contenire les numeros de quête et leur distance par raport au joueur
             for (Quete e : joueur.getQueteARealise()) {
@@ -78,7 +82,7 @@ public class Algo {
                 distance.remove(e);
             }
             int memoireChiffre = Integer.MAX_VALUE;
-            int memoireNumero = -1;
+            int memoireNumero = 0;
             distance.remove(0); /// car on veux faire toute les quête avant de finir
             for (int e : distance.keySet()) {
                 if (distance.get(e) < memoireChiffre) { /// choisie la quête la plus proche du joueur
@@ -86,13 +90,15 @@ public class Algo {
                     memoireChiffre = distance.get(e);
                 }
             }
-            System.out.println(joueur.faireQuete(memoireNumero));
+            QuetesRetour += joueur.faireQuete(memoireNumero);
 
             if (joueur.getQueteARealise().size() == 1) { /// si il ne reste plus que une seule quête c'est frocement la 0 donc on peut la faire
                 continu = false;
-                System.out.println(joueur.faireQuete(0)) ;
-                System.out.println("\n\n----------- bilan fin -----------\n ça a donc pris : " + joueur.getTemps() + "\n il a fait les quetes " + joueur.getQueteFini() + "\n et a gagner " + joueur.getChExperience() + " xp");
+                QuetesRetour += joueur.faireQuete(0) ;
+                QuetesRetour += "\n\n----------- bilan fin -----------\n ça a donc pris : " + joueur.getTemps() + "\n il a fait les quetes " + joueur.getQueteFini() + "\n et a gagner " + joueur.getChExperience() + " xp";
             }
         }
+        return QuetesRetour;
     }
+
 }
