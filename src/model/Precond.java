@@ -100,7 +100,7 @@ public class Precond {
      * @return true si les préconditions sont différentes, sinon false.
      */
     public boolean compareTo (Precond comparPrecond) {
-        if (this.condition0 != comparPrecond.condition0 || this.condition1 != comparPrecond.condition1 || this.condition2 != comparPrecond.condition2 || this.condition3 != comparPrecond.condition3 ){
+        if (this.condition0 == comparPrecond.condition0 || this.condition1 == comparPrecond.condition1 || this.condition2 == comparPrecond.condition2 || this.condition3 == comparPrecond.condition3 ){
             return true ;
         }
         else {
