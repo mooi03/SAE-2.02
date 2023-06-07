@@ -33,19 +33,14 @@ public class Position {
         chPosY = y ;
     }
     public int compareTo(Position comparPos) {
-        System.out.println("position actuelle :"+this.chPosX+" "+this.chPosY+" doit aller en "+ comparPos.chPosX +" "+ comparPos.chPosY ) ;
         int diffX = this.chPosX - comparPos.chPosX;
         int diffY = this.chPosY - comparPos.chPosY;
-
         if (diffX < 0) {
             diffX = -diffX;
         }
         if (diffY < 0) {
             diffY = -diffY;
         }
-        System.out.println("il a bougé de " + diffX+" cases en X");
-        System.out.println("il a bougé de "+diffY+" cases en Y");
-
         int totaltemps = diffX + diffY;
         return totaltemps;
     }

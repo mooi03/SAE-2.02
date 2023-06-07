@@ -38,5 +38,7 @@ public class Quete {
     public Precond getPrecond() {
         return precond ;
     }
-
+    public Position getPos(){return pos ;}
+    public int getExperience(){return experience ;}
+    public int getDuree(){ return duree ;}
 }
