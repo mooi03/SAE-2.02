@@ -1,19 +1,33 @@
 package model;
 import java.util.List;
 import java.util.Scanner;
-
+/**
+ * La classe Precond représente les préconditions d'une quête, définies par quatre conditions.
+ */
 public class Precond {
     private int condition0 ;
     private int condition1 ;
     private int condition2 ;
     private int condition3 ;
-
+    /**
+     * Constructeur de la classe Precond quicrée les préconditions avec les valeurs.
+     *
+     * @param cond0 La première condition.
+     * @param cond1 La deuxième condition.
+     * @param cond2 La troisième condition.
+     * @param cond3 La quatrième condition.
+     */
     public Precond (int cond0, int cond1 , int cond2 , int cond3 ){
         condition0 = cond0;
         condition1 = cond1 ;
         condition2 = cond2 ;
         condition3 = cond3 ;
     }
+    /**
+     * Constructeur de la classe Precond qui initialise les précondition avec str.
+     *
+     * @param str des précondition.
+     */
     public Precond (String str) {
         String precond = str ;
         int[] tabprecond = new int[4];
@@ -71,15 +85,20 @@ public class Precond {
             return false ;
         }
     }
-
+    /**
+     * Retourne une représentation sous forme de str des préconditions.
+     *
+     * @return Une chaîne de caractères représentant les préconditions.
+     */
     public String toString() {
         return "(" + condition0 + ","+ condition1 + ","+ condition2 + ","+ condition3 + ")" ;
     }
-    /*
-    * argument objet de class precond
-    * methode compareTo qui compare un objet precond avec this et si this diférrent de l'objet renvoie true sinon false
-    * return boolean
-    * */
+    /**
+     * Compare les précondition de 2 objets Preconb.
+     *
+     * @param comparPrecond L'objet Precond à comparer avec this.
+     * @return true si les préconditions sont différentes, sinon false.
+     */
     public boolean compareTo (Precond comparPrecond) {
         if (this.condition0 != comparPrecond.condition0 || this.condition1 != comparPrecond.condition1 || this.condition2 != comparPrecond.condition2 || this.condition3 != comparPrecond.condition3 ){
             return true ;

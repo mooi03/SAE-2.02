@@ -6,6 +6,12 @@ import java.util.List;
 import java.util.TreeMap;
 
 public class Algo {
+    /**
+     * Implémentation de l'algorithme GlouEfficace.
+     *
+     * @param nom_fichier Le nom du fichier contenant le scénario.
+     * @return Une chaîne de caractères représentant le déroulement de l'algorithme.
+     */
     public static String GlouEfficace(String nom_fichier) {
         // On recupère un des scénario présent dans le package scenario, qui possède le même de quand on l'apelle dans la méthode
         File scenario = new File("src" + File.separator + "scenario" + File.separator + nom_fichier);
@@ -58,7 +64,12 @@ public class Algo {
         }
         return QuetesRetour;
     }
-
+    /**
+     * Implémentation de l'algorithme GlouExhaustive.
+     *
+     * @param nomDuFichier Le nom du fichier contenant le scénario.
+     * @return Une chaîne de caractères représentant le déroulement de l'algorithme.
+     */
     public static String GlouExhaustive(String nomDuFichier) {
         File scenario = new File("src" + File.separator + "scenario" + File.separator + nomDuFichier);
         List<Quete> quetes = Scan.Lecture(scenario);
