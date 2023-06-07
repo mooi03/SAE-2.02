@@ -10,6 +10,13 @@ public class Graphe {
             dicoGraphe.put(point.getNumero(), point.getPrecond()) ;
         }
     }
+    public TreeMap<Integer,Boolean> estPossible(List<Integer> listFini) {
+        TreeMap<Integer,Boolean> fin = new TreeMap<>() ;
+        for ( int e : dicoGraphe.keySet()){
+            fin.put(e,dicoGraphe.get(e).estPossible(listFini)) ;
+        }
+        return fin ;
+    }
     public String toString() {
         return "Graphe{" +
                 "dicoGraphe=" + dicoGraphe +
